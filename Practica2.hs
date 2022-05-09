@@ -232,8 +232,8 @@ maximumBST (Nodo l a r) = maximumBST r
 --5b (es BST?)
 checkBST :: Ord a => Arbolbin a -> Bool
 checkBST (Nodo Leaf a Leaf) = True
-checkBST (Nodo Leaf a r) = True
-checkBST (Nodo l a Leaf) = True
+checkBST (Nodo Leaf a r) = (a <= (minimumBST r)) && (checkBST r)
+checkBST (Nodo l a Leaf) = ( a > (maximumBST l) ) && (checkBST l)
 checkBST (Nodo l a r) = (checkBST l) && (checkBST r) && ( a > (maximumBST l)) && ( a <= (minimumBST r)) 
 
 a = (Nodo Leaf 2 Leaf)  --es
